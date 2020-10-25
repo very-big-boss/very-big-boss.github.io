@@ -3,14 +3,6 @@
 #include<algorithm>
 #include<sstream>
 using namespace std;
-string ds(int n)
-{
-    string ll;
-    stringstream rr;
-    rr<<n;
-    rr>>ll;
-    return ll;
-}
 string ads(string a,string b)
 {
     reverse(a.begin(),a.end());
@@ -81,14 +73,14 @@ int main()
 {
     int n,i;
     cin>>n;
-    int a[n],b[n];
+    string a[n],b[n];
     for(i=0;i<=(n-1);i++)
     {
         cin>>a[i]>>b[i];
     }
     for(i=0;i<=(n-1);i++)
     {
-        cout<<ads(ds(a[i]),ds(b[i]))<<endl;
+        cout<<ads(a[i],b[i])<<endl;
     }
     return 0;
 }
