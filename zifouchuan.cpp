@@ -1,72 +1,65 @@
 #include<iostream>
 #include<string>
 #include<algorithm>
-#include<sstream>
+#include<cmath>
 using namespace std;
-string ads(string a,string b)
+string ass(string a,string b)
 {
     reverse(a.begin(),a.end());
     reverse(b.begin(),b.end());
-    int m=0;
+    int m,i;
     if(a.size()>=b.size())
     {
-        m=a.size();
-        b.resize(m,'0');
+        m=a.size()+1;
     }
     else
     {
-        m=b.size();
-        a.resize(m,'0');
+        m=b.size()+1;
     }
-    int at[m],bt[m],ct[m+1],i,q;
-    stringstream w;
-    for(i=0;i<=(m-1);i++)
+    a.resize(m,'0');
+    b.resize(m,'0');
+    int at[m],bt[m];
+    for(i=0;i<m;i++)
     {
-        w<<a[i];
-        w>>at[i];
-        w.clear();
-        w<<b[i];
-        w>>bt[i];
-        w.clear();
+        at[i]=a[i]-48;
+        bt[i]=b[i]-48;
     }
-    ct[m]=0;
-    for(i=0;i<=(m-1);i++)
+    int ct[m];
+    for(i=0;i<m;i++)
     {
-        ct[i]=at[i]+bt[i];
+        ct[i]=0;
     }
-    for(q=1;q<=10;q++)
+    for(i=0;i<m;i++)
     {
-        for(i=(m-1);i>=0;i--)
+        ct[i]=ct[i]+at[i]+bt[i];
+        if(ct[i]==2)
         {
-            if(ct[i]==2)
-            {
-                ct[i+1]+=1;
-                ct[i]=0;
-            }
+            ct[i+1]+=1;
+            ct[i]=0;
+        }
+        else if(ct[i]==3)
+        {
+            ct[i+1]+=1;
+            ct[i]=1;
         }
     }
-    stringstream lk;
-    if(ct[m]==0)
+    if(ct[m-1]==0)
     {
-        char r[m];
+        char ll[m-1];
+        for(i=0;i<(m-1);i++)
+        {
+            ll[i]=ct[m-2-i]+48;
+        }
+        return ll;
+    }
+    else
+    {
+        char ll[m];
         for(i=0;i<=(m-1);i++)
         {
-            lk<<ct[m-1-i];
-            lk>>r[i];
-            lk.clear();
+            ll[i]=ct[m-1-i]+48;
         }
-        return r;
-    }
-    else
-    {
-        char r[m+1];
-        for(i=0;i<=m;i++)
-        {
-            lk<<ct[m-i];
-            lk>>r[i];
-            lk.clear();
-        }
-        return r;
+        return ll;
     }
 }
 int main()
@@ -80,7 +73,7 @@ int main()
     }
     for(i=0;i<=(n-1);i++)
     {
-        cout<<ads(a[i],b[i])<<endl;
+        cout<<ass(a[i],b[i])<<endl;
     }
     return 0;
 }
