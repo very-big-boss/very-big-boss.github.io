@@ -1,9 +1,17 @@
 #include<iostream>
 #include<string>
 #include<algorithm>
-#include<cmath>
 using namespace std;
-string ass(string a,string b)
+long long powr(int a,int b)
+{
+    int i=0;long long s=1;
+    for(i=1;i<=b;i++)
+    {
+        s*=a;
+    }
+    return s;
+}
+long long ass(string a,string b)
 {
     reverse(a.begin(),a.end());
     reverse(b.begin(),b.end());
@@ -45,19 +53,19 @@ string ass(string a,string b)
     }
     if(ct[m-1]==0)
     {
-        char ll[m-1];
+        long long ll=0;
         for(i=0;i<(m-1);i++)
         {
-            ll[i]=ct[m-2-i]+48;
+            ll+=ct[i]*powr(10,i);
         }
         return ll;
     }
     else
     {
-        char ll[m];
+        long long ll=0;
         for(i=0;i<=(m-1);i++)
         {
-            ll[i]=ct[m-1-i]+48;
+            ll+=ct[i]*powr(10,i);
         }
         return ll;
     }
