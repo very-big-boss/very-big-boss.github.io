@@ -77,33 +77,15 @@ int main()
         {
             o=(o+30)%7;
         }
-        if(o==0)
+        switch(o)
         {
-            a0+=1;
-        }
-        if(o==1)
-        {
-            a1+=1;
-        }
-        if(o==2)
-        {
-            a2+=1;
-        }
-        if(o==3)
-        {
-            a3+=1;
-        }
-        if(o==4)
-        {
-            a4+=1;
-        }
-        if(o==5)
-        {
-            a5+=1;
-        }
-        if(o==6)
-        {
-            a6+=1;
+            case 0:a0+=1;break;
+            case 1:a1+=1;break;
+            case 2:a2+=1;break;
+            case 3:a3+=1;break;
+            case 4:a4+=1;break;
+            case 5:a5+=1;break;
+            case 6:a6+=1;break;
         }
     }
     cout<<a6<<" "<<a0<<" "<<a1<<" "<<a2<<" "<<a3<<" "<<a4<<" "<<a5<<endl;
