@@ -2,16 +2,7 @@
 #include<string>
 #include<algorithm>
 using namespace std;
-long long powr(int a,int b)
-{
-    int i=0;long long s=1;
-    for(i=1;i<=b;i++)
-    {
-        s*=a;
-    }
-    return s;
-}
-long long ass(string a,string b)
+string ass(string a,string b)
 {
     reverse(a.begin(),a.end());
     reverse(b.begin(),b.end());
@@ -33,7 +24,7 @@ long long ass(string a,string b)
         bt[i]=b[i]-48;
     }
     int ct[m];
-    for(i=0;i<m;i++)
+    for(i=0;i<=(m-1);i++)
     {
         ct[i]=0;
     }
@@ -51,24 +42,24 @@ long long ass(string a,string b)
             ct[i]=1;
         }
     }
+    char kkk[m+1];
     if(ct[m-1]==0)
     {
-        long long ll=0;
-        for(i=0;i<(m-1);i++)
+        for(i=0;i<=(m-2);i++)
         {
-            ll+=ct[i]*powr(10,i);
+            kkk[i]=ct[m-2-i]+48;
         }
-        return ll;
+        kkk[m-1]='\0';
     }
-    else
+    else if(ct[m-1]!=0)
     {
-        long long ll=0;
         for(i=0;i<=(m-1);i++)
         {
-            ll+=ct[i]*powr(10,i);
+            kkk[i]=ct[m-1-i]+48;
         }
-        return ll;
+        kkk[m]='\0';
     }
+    return kkk;
 }
 int main()
 {
